@@ -7,6 +7,7 @@ final List<Pet> pets = [
     price: 100,
     isAdopted: false,
     imageUrl: 'assets/images/pet1.png',
+    inHistory: false,
   ),
   Pet(
     name: 'Cat',
@@ -14,6 +15,7 @@ final List<Pet> pets = [
     price: 120,
     isAdopted: false,
     imageUrl: 'assets/images/pet2.png',
+    inHistory: false,
   ),
   Pet(
     name: 'Bird',
@@ -21,6 +23,7 @@ final List<Pet> pets = [
     price: 40,
     isAdopted: false,
     imageUrl: 'assets/images/pet3.png',
+    inHistory: false,
   ),
   Pet(
     name: 'Hamster',
@@ -28,6 +31,7 @@ final List<Pet> pets = [
     price: 80,
     isAdopted: false,
     imageUrl: 'assets/images/pet4.png',
+    inHistory: false,
   ),
   Pet(
     name: 'Horse',
@@ -35,6 +39,7 @@ final List<Pet> pets = [
     price: 200,
     isAdopted: false,
     imageUrl: 'assets/images/pet5.png',
+    inHistory: false,
   ),
   Pet(
     name: 'Tiger',
@@ -42,6 +47,7 @@ final List<Pet> pets = [
     price: 500,
     isAdopted: false,
     imageUrl: 'assets/images/pet6.png',
+    inHistory: false,
   ),
   Pet(
     name: 'Bear',
@@ -49,6 +55,7 @@ final List<Pet> pets = [
     price: 500,
     isAdopted: false,
     imageUrl: 'assets/images/pet7.png',
+    inHistory: false,
   ),
   Pet(
     name: 'Snake',
@@ -56,6 +63,7 @@ final List<Pet> pets = [
     price: 400,
     isAdopted: false,
     imageUrl: 'assets/images/pet8.png',
+    inHistory: false,
   ),
   Pet(
     name: 'Otter',
@@ -63,6 +71,7 @@ final List<Pet> pets = [
     price: 100,
     isAdopted: false,
     imageUrl: 'assets/images/pet9.png',
+    inHistory: false,
   ),
   Pet(
     name: 'Wolf',
@@ -70,5 +79,38 @@ final List<Pet> pets = [
     price: 300,
     isAdopted: false,
     imageUrl: 'assets/images/pet10.png',
+    inHistory: false,
+  ),
+  Pet(
+    name: 'Frog',
+    age: 1,
+    price: 100,
+    isAdopted: false,
+    imageUrl: 'assets/images/pet11.png',
+    inHistory: false,
+  ),
+  Pet(
+    name: 'Elephant',
+    age: 5,
+    price: 600,
+    isAdopted: false,
+    imageUrl: 'assets/images/pet12.png',
+    inHistory: false,
+  ),
+  Pet(
+    name: 'Sloth',
+    age: 3,
+    price: 300,
+    isAdopted: false,
+    imageUrl: 'assets/images/pet13.png',
+    inHistory: false,
+  ),
+  Pet(
+    name: 'Panda',
+    age: 3,
+    price: 400,
+    isAdopted: false,
+    imageUrl: 'assets/images/pet14.png',
+    inHistory: false,
   ),
 ];
