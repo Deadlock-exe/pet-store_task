@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:pet_store/database/pet_database.dart';
 // ignore: library_prefixes
 import 'package:pet_store/models/list_pets.dart' as petData;
 import 'package:pet_store/models/list_pets.dart';
@@ -15,16 +17,34 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
-  List<Pet> displayedPets = petData.pets; // Use the correct name
+  List<Pet> displayedPets = petData.pets;
   bool isSearchBarVisible = false;
   List<Pet> adoptedPets = [];
 
+  var _petBox = Hive.box('petbox');
+  PetDatabase petDb = PetDatabase();
+
   @override
   void initState() {
+    super.initState();
+
+    // Open the Hive box
+    Hive.openBox('petbox').then((box) {
+      _petBox = box;
+
+      // Check if the 'ADOPTEDPETS' key exists in the box
+      if (_petBox.containsKey('ADOPTEDPETS')) {
+        // Read data from the box
+        petDb.readData();
+      } else {
+        // Initialize data if the key doesn't exist
+        petDb.createInitialData();
+      }
+    });
+
     _searchController.addListener(() {
       _searchPets(_searchController.text);
     });
-    super.initState();
   }
 
   void _searchPets(String query) {

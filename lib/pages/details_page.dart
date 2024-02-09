@@ -33,6 +33,13 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    void updateStatus(bool status) {
+      setState(() {
+        widget.pet.isAdopted = status;
+        widget.pet.inHistory = status;
+      });
+    }
+
     void showAdoptedDialog(Pet pet) {
       showDialog(
         context: context,
@@ -43,9 +50,9 @@ class _DetailsPageState extends State<DetailsPage> {
             actions: [
               TextButton(
                 onPressed: () {
+                  updateStatus(true);
                   _confettiController.play();
-                  widget
-                      .updateCallback(); // Create a new controller for future use
+                  widget.updateCallback();
                   Navigator.pop(context, pet);
                 },
                 child: const Text('OK'),
@@ -102,81 +109,84 @@ class _DetailsPageState extends State<DetailsPage> {
               horizontal: 50,
               vertical: 20,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ColorFiltered(
-                  colorFilter: widget.pet.isAdopted == true
-                      ? const ColorFilter.mode(
-                          Colors.grey,
-                          BlendMode.saturation,
-                        )
-                      : const ColorFilter.mode(
-                          Colors
-                              .transparent, // You can use Colors.transparent for no filter
-                          BlendMode.darken,
-                        ),
-                  child: Image.asset(
-                    widget.pet.imageUrl,
-                  ),
-                ),
-                const SizedBox(height: 35),
-                Text(
-                  'Name: ${widget.pet.name}',
-                  style: const TextStyle(
-                    fontSize: 22,
-                    decoration: TextDecoration.none,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-                Text(
-                  'Age: ${widget.pet.age}',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    decoration: TextDecoration.none,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-                Text(
-                  'Price: \$${widget.pet.price}',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    decoration: TextDecoration.none,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-                const SizedBox(height: 25),
-                ElevatedButton(
-                  onPressed: () {
-                    adoptPet(widget.pet);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.brown,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    padding: const EdgeInsets.all(16.0),
-                  ),
-                  child: const Text(
-                    'Adopt Me',
-                    style: TextStyle(
-                      fontSize: 15,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ColorFiltered(
+                    colorFilter: widget.pet.isAdopted == true
+                        ? const ColorFilter.mode(
+                            Colors.grey,
+                            BlendMode.saturation,
+                          )
+                        : const ColorFilter.mode(
+                            Colors.transparent,
+                            BlendMode.darken,
+                          ),
+                    child: Image.asset(
+                      widget.pet.imageUrl,
+                      height: 300,
+                      width: 300,
                     ),
                   ),
-                ),
-                ConfettiWidget(
-                  confettiController: _confettiController,
-                  blastDirection: 3.14,
-                  emissionFrequency: 0.05,
-                  numberOfParticles: 20,
-                  maxBlastForce: 100,
-                  minBlastForce: 80,
-                  blastDirectionality: BlastDirectionality.explosive,
-                ),
-              ],
+                  const SizedBox(height: 35),
+                  Text(
+                    'Name: ${widget.pet.name}',
+                    style: const TextStyle(
+                      fontSize: 22,
+                      decoration: TextDecoration.none,
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  Text(
+                    'Age: ${widget.pet.age}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      decoration: TextDecoration.none,
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  Text(
+                    'Price: \$${widget.pet.price}',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      decoration: TextDecoration.none,
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  const SizedBox(height: 25),
+                  ElevatedButton(
+                    onPressed: () {
+                      adoptPet(widget.pet);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.brown,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      padding: const EdgeInsets.all(16.0),
+                    ),
+                    child: const Text(
+                      'Adopt Me',
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                  ConfettiWidget(
+                    confettiController: _confettiController,
+                    blastDirection: 3.14,
+                    emissionFrequency: 0.05,
+                    numberOfParticles: 20,
+                    maxBlastForce: 100,
+                    minBlastForce: 80,
+                    blastDirectionality: BlastDirectionality.explosive,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
