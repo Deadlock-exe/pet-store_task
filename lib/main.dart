@@ -5,7 +5,8 @@ import 'package:pet_store/pages/home_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  var box = await Hive.openBox('petbox');
+  // ignore: unused_local_variable
+  Box petBox = await Hive.openBox('petbox');
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
